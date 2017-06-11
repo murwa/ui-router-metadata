@@ -9,7 +9,7 @@
         "seo",
         "angulajs seo"
     ],
-    "main": "src/main.js",
+    "main": "dist/main.js",
     "authors": [
         {
             "name": "Peter Murwa",
