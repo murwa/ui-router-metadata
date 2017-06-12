@@ -44,6 +44,6 @@ describe('ui-router-metadata module', function () {
         $state.go('meta-promise');
         $rootScope.$digest();
         $timeout.flush();
-        expect(window.title).toBe('Promised title');
+        expect(window.title).toBe('Promised Title');
     });
 });

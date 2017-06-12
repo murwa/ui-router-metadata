@@ -66,7 +66,7 @@
         .run(['$metadata', '$rootScope', '$timeout', function ($metadata, $rootScope, $timeout) {
             $rootScope.$on('$stateChangeSuccess', function () {
                 $timeout(function () {
-                    window.title = $metadata.get('title');
+                    window.title = $metadata.getTitle();
                 });
             });
         }]);
