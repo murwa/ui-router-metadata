@@ -4,7 +4,8 @@
  */
 (function (angular) {
     angular.module('ui-router-metadata', [
-        'ui.router'
+        'ui.router',
+        'angular-utility-filters.uc-words'
     ])
         .provider('$metadata', [function MetadataProvider() {
             // Define defaults
@@ -22,8 +23,8 @@
 
                 throw 'Defaults must be an object';
             }
-            this.$get = ['$state', function ($state) {
-                return new MetadataService($state, defaults);
+            this.$get = ['$state', '$filter', function ($state, $filter) {
+                return new MetadataService($state, defaults, $filter);
             }];
 
             /**
@@ -32,7 +33,7 @@
              * @param {*} $state 
              * @param {*} config 
              */
-            function MetadataService($state, config) {
+            function MetadataService($state, config, $filter) {
                 // Init
                 var self = this;
 
@@ -42,8 +43,23 @@
                  * @return {*|string}
                  */
                 self.get = function (key) {
-                    var meta = $state.$current.locals.globals['$meta'] || config;
+                    var meta = resolveMeta();
                     return key ? meta[key] : meta;
+                }
+                /**
+                 * Get metadata title.
+                 * @return {string}
+                 */
+                self.getTitle = function () {
+                    return $filter('ucWords')(self.get('title'));
+                }
+
+                /**
+                 * Resolve metadata
+                 * @return {*}
+                 */
+                function resolveMeta() {
+                    return $state.$current.locals.globals['$meta'] || config;
                 }
             }
         }])
