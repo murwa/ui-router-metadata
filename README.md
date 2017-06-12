@@ -1,3 +1,4 @@
+[![Bower version](https://badge.fury.io/bo/ui-router-metadata.svg)](https://badge.fury.io/bo/ui-router-metadata)
 [![Build Status](https://travis-ci.org/murwa/ui-router-metadata.svg?branch=master)](https://travis-ci.org/murwa/ui-router-metadata)
 
 ## UI-Router Metadata
