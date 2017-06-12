@@ -73,10 +73,9 @@
         }])
         .run(['$metadata', '$rootScope', '$timeout', function ($metadata, $rootScope, $timeout) {
             $rootScope.$on('$stateChangeSuccess', function () {
-                window.title = $metadata.getTitle();
-                // $timeout(function () {
-                //     window.title = $metadata.getTitle();
-                // });
+                $timeout(function () {
+                    document.title = $metadata.getTitle();
+                });
             });
         }]);
 })(angular);
