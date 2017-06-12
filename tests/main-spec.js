@@ -44,14 +44,14 @@ describe('ui-router-metadata module', function () {
         $state.go('meta-promise');
         $rootScope.$digest();
         $timeout.flush();
-        expect(window.title).toBe('Promised Title');
+        expect(document.title).toBe('Promised Title');
     });
 
     it('should truncate a description to 160 characters', function () {
         $state.go('long-description');
         $rootScope.$digest();
         $timeout.flush();
-        expect(window.title).toBe('Hello World');
+        expect(document.title).toBe('Hello World');
         expect($metadata.getDescription().length).toEqual(160);
     });
 });
