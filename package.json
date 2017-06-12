@@ -8,12 +8,12 @@
   },
   "description": "Angularjs ui-router metadata module for SEO",
   "keywords": [
-        "angularjs",
-        "ui-router",
-        "errors",
-        "error handling",
-        "seo",
-        "angulajs seo"
+    "angularjs",
+    "ui-router",
+    "errors",
+    "error handling",
+    "seo",
+    "angulajs seo"
   ],
   "repository": "https://github.com/murwa/ui-router-metadata",
   "license": "MIT",
