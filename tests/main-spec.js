@@ -1,11 +1,12 @@
 describe('ui-router-metadata module', function () {
-    var $state, $metadata, $rootScope, $timeout;
+    var $state, $metadata, $rootScope, $timeout, $location;
     beforeEach(module('test-states'));
-    beforeEach(inject(function (_$state_, _$metadata_, _$rootScope_, _$timeout_) {
+    beforeEach(inject(function (_$state_, _$metadata_, _$rootScope_, _$timeout_, _$location_) {
         $state = _$state_;
         $metadata = _$metadata_;
         $rootScope = _$rootScope_;
         $timeout = _$timeout_;
+        $location = _$location_;
     }));
 
     it('should set null title when $meta is not defined on state', function () {
@@ -45,6 +46,13 @@ describe('ui-router-metadata module', function () {
         $rootScope.$digest();
         $timeout.flush();
         expect(document.title).toBe('Promised Title');
+    });
+
+    it('should get page url', function () {
+        $state.go('meta-promise');
+        $rootScope.$digest();
+        $timeout.flush();
+        expect($metadata.getUrl()).toBeDefined();
     });
 
     it('should truncate a description to 160 characters', function () {

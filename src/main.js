@@ -24,19 +24,22 @@
 
                 throw 'Defaults must be an object';
             }
-            this.$get = ['$state', '$filter', function ($state, $filter) {
-                return new MetadataService($state, defaults, $filter);
+            this.$get = ['$injector', function ($injector) {
+                return new MetadataService($injector, defaults);
             }];
 
             /**
              * Error service
              * 
-             * @param {*} $state 
+             * @param {*} $injector 
              * @param {*} config 
              */
-            function MetadataService($state, config, $filter) {
+            function MetadataService($injector, config) {
                 // Init
-                var self = this;
+                var self = this,
+                    $filter = $injector.get('$filter'),
+                    $state = $injector.get('$state'),
+                    $location = $injector.get('$location');
 
                 /**
                  * Get metadata value
@@ -60,6 +63,13 @@
                  */
                 self.getDescription = function () {
                     return $filter('limitTo')(self.get('description'), config.descriptionLength, '');
+                }
+                /**
+                 * Metadata page url
+                 * @return {string}
+                 */
+                self.getUrl = function () {
+                    return $location.absUrl();
                 }
 
                 /**
