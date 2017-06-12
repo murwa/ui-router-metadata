@@ -72,8 +72,11 @@
             }
         }])
         .run(['$metadata', '$rootScope', '$timeout', function ($metadata, $rootScope, $timeout) {
+            console.log('Binding event listeners')
             $rootScope.$on('$stateChangeSuccess', function () {
+                console.log('State changed')
                 $timeout(function () {
+                    console.log('Title set' - $metadata.getTitle());
                     window.title = $metadata.getTitle();
                 });
             });
