@@ -12,7 +12,8 @@
             var defaults = {
                 title: null,
                 description: null,
-                image: null
+                image: null,
+                descriptionLength: 160
             };
             // For optional use in config phase
             this.setDefaults = function (values) {
@@ -52,6 +53,13 @@
                  */
                 self.getTitle = function () {
                     return $filter('ucWords')(self.get('title'));
+                }
+                /**
+                 * Get metadata description
+                 * @return {string}
+                 */
+                self.getDescription = function () {
+                    return $filter('limitTo')(self.get('description'), config.descriptionLength, '');
                 }
 
                 /**
