@@ -76,6 +76,7 @@
             $rootScope.$on('$stateChangeSuccess', function () {
                 console.log('State changed')
                 $timeout(function () {
+                    console.log($metadata.getTitle());
                     console.log('Title set - ' + $metadata.getTitle());
                     window.title = $metadata.getTitle();
                 });
